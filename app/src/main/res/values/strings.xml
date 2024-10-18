@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Alertifyapp</string>
+    <string name="get_started">Get started</string>
+    <string name="emergency_hotline">Emergency Hotline</string>
+    <string name="_911">911</string>
+    <string name="sign_up">Sign up</string>
+</resources>
