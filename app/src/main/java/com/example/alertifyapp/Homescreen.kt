@@ -5,10 +5,15 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.alertifyapp.adapter.HomeScreenAdapter
+import com.example.alertifyapp.fragments.HomeFragment
+import com.example.alertifyapp.fragments.NotificationFragment
+import com.example.alertifyapp.fragments.SettingFragment
 import com.example.alertifyapp.model.HomeScreen
+import com.qamar.curvedbottomnaviagtion.CurvedBottomNavigation
 
 class Homescreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,6 +68,39 @@ class Homescreen : AppCompatActivity() {
 
         rvhomescreen.adapter = HomeScreenAdapter(arrList)
 
+        val bottomNavigation = findViewById<CurvedBottomNavigation>(R.id.bottomNavigation)
+        bottomNavigation.add(
+            CurvedBottomNavigation.Model(1, "Home",R.drawable.homeicon)
+        )
+        bottomNavigation.add(
+            CurvedBottomNavigation.Model(2, "Notification",R.drawable.bellicon)
+        )
+        bottomNavigation.add(
+            CurvedBottomNavigation.Model(3, "Contact",R.drawable.contactus)
+        )
 
+        bottomNavigation.setOnClickMenuListener {
+            when(it.id){
+                1 -> {
+                    replaceFragment(HomeFragment())
+                }
+                2 -> {
+                    replaceFragment(NotificationFragment())
+                }
+                3-> {
+                    replaceFragment(SettingFragment())
+                }
+            }
+        }
+
+        replaceFragment(HomeFragment())
+        bottomNavigation.show(2)
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragmentContainer,fragment)
+            .commit()
     }
 }
