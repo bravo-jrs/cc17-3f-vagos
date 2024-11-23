@@ -23,7 +23,7 @@ class JoinToday : AppCompatActivity() {
 
         val thirdButton = findViewById<Button>(R.id.create_account)
         thirdButton.setOnClickListener {
-            val intent3 = Intent (this, Access_Location::class.java)
+            val intent3 = Intent (this, AccessLocation::class.java)
             startActivity(intent3)
         }
 

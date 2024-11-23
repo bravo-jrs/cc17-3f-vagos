@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -24,7 +23,7 @@ class Loginscreen : AppCompatActivity() {
 
         val secondButton = findViewById<Button>(R.id.signin)
         secondButton.setOnClickListener {
-            val intent2 = Intent (this, Access_Location::class.java)
+            val intent2 = Intent (this, AccessLocation::class.java)
             startActivity(intent2)
 
 //        val forgot_password = findViewById<TextView>(R.id.forgot_password)

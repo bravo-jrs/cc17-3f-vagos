@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Alertifyapp</string>
+    <string name="nav_open">Open Navigation Drawer</string>
+    <string name="nav_close">Close Navigation Drawer</string>
     <string name="get_started">Get started</string>
     <string name="emergency_hotline">Emergency Hotline</string>
     <string name="_911">911</string>

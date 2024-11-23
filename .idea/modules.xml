@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/cc17-3f-vagos.iml" filepath="$PROJECT_DIR$/.idea/cc17-3f-vagos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Alertifyapp.iml" filepath="$PROJECT_DIR$/.idea/modules/Alertifyapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Alertifyapp.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Alertifyapp.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Alertifyapp.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Alertifyapp.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Alertifyapp.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Alertifyapp.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Alertifyapp.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Alertifyapp.app.unitTest.iml" />
     </modules>
   </component>
 </project>

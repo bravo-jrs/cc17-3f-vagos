@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:background="@color/green"
+    android:padding="16dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+    <!-- Centered Layout for Image and Text -->
+    <LinearLayout
+        android:id="@+id/image_text_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_centerVertical="true"
+        android:orientation="horizontal">
+
+        <!-- User Image -->
+        <ImageView
+            android:id="@+id/user_image"
+            android:layout_width="35dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="15dp"
+            android:contentDescription="Profile Image"
+            android:src="@drawable/contacticon" />
+
+        <!-- User Name TextView -->
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="215dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:padding="8dp"
+            android:text="Pepito Manaloto"
+            android:textColor="@android:color/white"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/edit"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Edit Profile"
+            android:src="@drawable/profile_edit_icon" />
+
+    </LinearLayout>
+</RelativeLayout>

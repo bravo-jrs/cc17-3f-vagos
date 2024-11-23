@@ -16,7 +16,7 @@
             android:name=".Homescreen"
             android:exported="false" />
         <activity
-            android:name=".Access_Location"
+            android:name=".AccessLocation"
             android:exported="false" />
         <activity
             android:name=".JoinToday"

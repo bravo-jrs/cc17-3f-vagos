@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottom_home"
+        android:title="Home"
+        android:icon="@drawable/homeicon" />
+
+    <item
+        android:id="@+id/bottom_notification"
+        android:title="Notification"
+        android:icon="@drawable/bellicon" />
+
+    <item
+        android:id="@+id/bottom_report"
+        android:title="Report"
+        android:icon="@drawable/contactus" />
+
+
+
+</menu>
