@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/drawerLayout"
     tools:context=".MainActivity">
 
     <!-- Main Content Area -->
@@ -17,7 +18,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/green"
+            android:background="@color/black"
             android:elevation="4dp"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             android:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
@@ -40,19 +41,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:backgroundTint="@color/green"
+            android:backgroundTint="@color/black"
             app:fabCradleMargin="10dp"
             app:fabCradleRoundedCornerRadius="50dp" />
 
         <!-- BottomNavigationView -->
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottom_navigation"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="@android:color/transparent"
             app:menu="@menu/bottom_menu"
-            app:labelVisibilityMode="labeled" />
+            android:background="@android:color/transparent"
+            app:labelVisibilityMode="labeled"
+            app:itemIconTint="@color/bottom_navigation_item_color"
+            app:itemTextColor="@color/bottom_navigation_item_color"  />
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
@@ -63,8 +66,8 @@
         android:layout_height="match_parent"
         android:id="@+id/navigation_drawer"
         android:layout_gravity="start"
-        app:itemIconTint="@color/green"
-        app:itemTextColor="@color/green"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black"
         app:headerLayout="@layout/nav_header"
         app:menu="@menu/nav_menu"/>
 

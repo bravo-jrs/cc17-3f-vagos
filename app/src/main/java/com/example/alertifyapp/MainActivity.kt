@@ -1,6 +1,5 @@
 package com.example.alertifyapp
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -19,31 +18,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
-        // Check if this is the first launch
-        val isFirstLaunch = checkFirstLaunch()
-        if (isFirstLaunch) {
-            // Navigate to Intro Screen
-            startActivity(Intent(this, MainActivity::class.java))
-            finish() // Prevent returning to this activity
-            return
-        }
-
-        // If location permissions are not granted, navigate to location access screen
-        if (!isLocationPermissionGranted()) {
-            startActivity(Intent(this, AccessLocation::class.java))
-            finish()
-            return
-        }
-
-        // Inflate main layout
-        binding = .inflate(layoutInflater)
+        // Inflate main layout using View Binding
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // Initialize the toolbar
         setSupportActionBar(binding.toolbar)
 
-        // Setup drawer toggle
+        // Setup drawer toggle for the navigation drawer
         val toggle = ActionBarDrawerToggle(
             this,
             binding.drawerLayout,
@@ -51,67 +35,58 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.string.nav_open,
             R.string.nav_close
         )
-        binding.drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
+        binding.drawerLayout.addDrawerListener(toggle) // Add toggle listener to the drawer layout
+        toggle.syncState() // Sync the toggle state with the drawer layout
 
-        // Setup Navigation Drawer
+        // Setup Navigation Drawer item selection listener
         binding.navigationDrawer.setNavigationItemSelectedListener(this)
 
         // Initialize fragment manager
         fragmentManager = supportFragmentManager
 
         // Set Bottom Navigation behavior
-        binding.bottomNavigation.background = null
+        binding.bottomNavigation.background = null // Remove default background
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.bottom_home -> openFragment(HomeFragment())
-                R.id.bottom_notification -> openFragment(NotificationFragment())
-                R.id.bottom_report -> openFragment(ReportFragment())
+                R.id.bottom_home -> openFragment(HomeFragment()) // Open HomeFragment
+                R.id.bottom_notification -> openFragment(NotificationFragment()) // Open NotificationFragment
+                R.id.bottom_report -> openFragment(ReportFragment()) // Open ReportFragment
             }
-            true
+            true // Indicate that the item selection was handled
         }
 
-        // Start with HomeFragment
+        // Start with HomeFragment by default
         openFragment(HomeFragment())
     }
 
+    // Handle navigation item selection from the Navigation Drawer
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.nav_contact_us -> openFragment(ContactFragment())
-            R.id.nav_about_us -> openFragment(AboutFragment())
-            R.id.nav_faqs -> openFragment(FaqsFragment())
+            R.id.nav_contact_us -> openFragment(ContactusFragment()) // Open ContactFragment
+            R.id.nav_about_us -> openFragment(AboutusFragment()) // Open AboutFragment
+            R.id.nav_faqs -> openFragment(FaqsFragment()) // Open FaqsFragment
+            else -> return false // Handle unexpected selections
         }
-        binding.drawerLayout.closeDrawer(GravityCompat.START)
-        return true
+        binding.drawerLayout.closeDrawer(GravityCompat.START) // Close the drawer after selection
+        return true // Indicate that the selection was handled
     }
+
+    // Handle back button press using the new OnBackPressedDispatcher
 
     override fun onBackPressed() {
         if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            binding.drawerLayout.closeDrawer(GravityCompat.START)
+            binding.drawerLayout.closeDrawer(GravityCompat.START) // Close the drawer if it's open
         } else {
+            // Call the default backPressed behavior after handling drawer
             super.onBackPressed()
         }
     }
 
+
+    // Method to open a specific fragment
     private fun openFragment(fragment: Fragment) {
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.item_view, fragment)
-        fragmentTransaction.commit()
-    }
-
-    private fun checkFirstLaunch(): Boolean {
-        // Logic to check if this is the first launch
-        val sharedPref = getSharedPreferences("AppPreferences", MODE_PRIVATE)
-        val isFirstLaunch = sharedPref.getBoolean("isFirstLaunch", true)
-        if (isFirstLaunch) {
-            sharedPref.edit().putBoolean("isFirstLaunch", false).apply()
-        }
-        return isFirstLaunch
-    }
-
-    private fun isLocationPermissionGranted(): Boolean {
-        // Add logic to check location permissions
-        // This can use ContextCompat.checkSelfPermission()
-        return true // Return true for now as a placeholder
+        val fragmentTransaction = fragmentManager.beginTransaction() // Begin a fragment transaction
+        fragmentTransaction.replace(R.id.fragment_container, fragment) // Replace the current fragment with the new one
+        fragmentTransaction.commit() // Commit the transaction
     }
 }

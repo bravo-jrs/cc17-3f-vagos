@@ -1,37 +1,30 @@
 package com.example.alertifyapp
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.alertifyapp.databinding.ActivityLoginscreenBinding
 
 class Loginscreen : AppCompatActivity() {
-    @SuppressLint("MissingInflatedId")
+
+    private lateinit var binding: ActivityLoginscreenBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_loginscreen)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        binding = ActivityLoginscreenBinding.inflate(layoutInflater) // Inflate the layout using View Binding
+        setContentView(binding.root) // Set the content view to the root of the binding
+
+        // Set a click listener on the button to go to JoinTodayActivity
+        binding.signup.setOnClickListener {
+            startActivity(Intent(this, JoinToday::class.java)) // Start JoinTodayActivity
         }
 
-        val secondButton = findViewById<Button>(R.id.signin)
-        secondButton.setOnClickListener {
-            val intent2 = Intent (this, AccessLocation::class.java)
-            startActivity(intent2)
-
-//        val forgot_password = findViewById<TextView>(R.id.forgot_password)
-//        forgot_password.setOnClickListener {
-//            val inTent = Intent(this, )
-//            startActivity(inTent)
-
+        // Set a click listener on the button to go to AccessLocation
+        binding.signinow.setOnClickListener {
+            val intent = Intent(this, AccessLocation::class.java) // Create an intent for AccessLocation
+            startActivity(intent) // Start AccessLocation activity
+            finish() // Close Loginscreen activity
         }
-
     }
 }
