@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.alertifyapp">
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <application
         android:theme="@style/Theme.Alertifyapp"
         android:label="Alertify App"
@@ -21,7 +22,6 @@
         <!-- Other activities -->
         <activity android:name=".Loginscreen" android:exported="true" />
         <activity android:name=".JoinToday" android:exported="true" />
-        <activity android:name=".AccessLocation" android:exported="true"/>
         <activity android:name=".MainActivity" android:exported="true" />
 
 

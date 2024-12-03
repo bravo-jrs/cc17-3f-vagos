@@ -44,15 +44,4 @@
     </LinearLayout>
 
 
-    <ImageButton
-        android:id="@+id/edit"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="190dp"
-        android:layout_marginTop="60dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="Edit Profile"
-        android:src="@drawable/profile_edit_icon" />
-
-
 </RelativeLayout>

@@ -1,20 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/main"
-    tools:context=".fragments.ReportFragment">
-
-    <!-- TODO: Update blank fragment layout -->
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <TextView
-        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="What are you reporting?"
+        android:textSize="18sp"
         android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textSize="32sp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Report" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="10dp"/>
 
-</FrameLayout>
+    <!-- RadioGroup for selecting outage type -->
+    <RadioGroup
+        android:id="@+id/rg_outage_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/rb_house_outage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No Power - Only My House/Building" />
+
+        <RadioButton
+            android:id="@+id/rb_street_outage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No Power - Entire Street/Block" />
+
+        <RadioButton
+            android:id="@+id/rb_unstable_power"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Unstable Power" />
+
+        <RadioButton
+            android:id="@+id/rb_streetlight_issue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Streetlight Issue" />
+    </RadioGroup>
+
+    <!-- Subheading for damage description -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="What specific issue or damage have you observed?"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"/>
+
+    <EditText
+        android:id="@+id/et_damage_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Describe the damage"
+        android:minHeight="48dp" />
+
+    <!-- Subheading for address input -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Where is your concern located?"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Address"
+        android:textSize="16sp"
+        android:layout_marginBottom="8dp" />
+
+    <EditText
+        android:id="@+id/et_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Address"
+        android:minHeight="48dp" />
+
+    <!-- Button for submitting the report -->
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:layout_marginTop="50dp" />
+</LinearLayout>

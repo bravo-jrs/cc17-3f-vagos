@@ -18,7 +18,7 @@
         android:textStyle="bold"
         android:textColor="@color/black"
         android:textSize="32sp"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="180dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -84,6 +84,7 @@
         android:layout_height="48dp"
         android:backgroundTint="#70d561"
         android:text="Sign in"
+        android:fontFamily="@font/adlam_display"
         android:textStyle="bold"
         android:textColor="@color/black"
         android:layout_marginTop="40dp"
@@ -116,8 +117,9 @@
         android:layout_height="wrap_content"
         android:text="Sign Up"
         android:textColor="@color/green"
-        app:layout_constraintTop_toBottomOf="@id/already_have_account_login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/already_have_account_login" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

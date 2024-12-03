@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Alertifyapp.iml" filepath="$PROJECT_DIR$/.idea/modules/Alertifyapp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Alertifyapp.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Alertifyapp.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Alertifyapp.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Alertifyapp.app.androidTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Alertifyapp.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Alertifyapp.app.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Alertifyapp.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Alertifyapp.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cc17-3f-vagos.Alertifyapp.iml" filepath="$PROJECT_DIR$/.idea/modules/cc17-3f-vagos.Alertifyapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/cc17-3f-vagos.Alertifyapp.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/cc17-3f-vagos.Alertifyapp.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/cc17-3f-vagos.Alertifyapp.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/cc17-3f-vagos.Alertifyapp.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/cc17-3f-vagos.Alertifyapp.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/cc17-3f-vagos.Alertifyapp.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/cc17-3f-vagos.Alertifyapp.app.unitTest~1.iml" filepath="$PROJECT_DIR$/.idea/modules/app/cc17-3f-vagos.Alertifyapp.app.unitTest~1.iml" />
     </modules>
   </component>
 </project>
