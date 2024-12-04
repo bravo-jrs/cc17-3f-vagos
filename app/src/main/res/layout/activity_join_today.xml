@@ -147,16 +147,4 @@
         app:layout_constraintHorizontal_bias="0.5"
         tools:ignore="VisualLintBounds" />
 
-    <!-- Sign In Button -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/signin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sign In"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        app:layout_constraintTop_toBottomOf="@id/already_have_account"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="VisualLintBounds" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

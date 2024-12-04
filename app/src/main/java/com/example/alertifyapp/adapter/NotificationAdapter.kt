@@ -1,5 +1,6 @@
 package com.example.alertifyapp.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,6 +28,7 @@ class NotificationAdapter(
     override fun getItemCount(): Int = notifications.size
 
     // Method to update the notifications list and notify the adapter to refresh the RecyclerView
+    @SuppressLint("NotifyDataSetChanged")
     fun updateNotifications(newNotifications: List<NotificationContent>) {
         notifications = newNotifications
         notifyDataSetChanged() // Notify that data has changed and RecyclerView should refresh

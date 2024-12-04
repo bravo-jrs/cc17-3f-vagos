@@ -28,10 +28,8 @@ import com.example.alertifyapp.model.UserViewModel
 import com.example.alertifyapp.model.UserViewModelFactory
 import com.example.alertifyapp.fragments.AboutusFragment
 import com.example.alertifyapp.fragments.ContactusFragment
-import com.example.alertifyapp.fragments.FaqsFragment
 import com.example.alertifyapp.fragments.HomeFragment
 import com.example.alertifyapp.fragments.NotificationFragment
-import com.example.alertifyapp.fragments.ProfileFragment
 import com.example.alertifyapp.fragments.ReportFragment
 import com.google.android.material.navigation.NavigationView
 
@@ -67,9 +65,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         binding.navigationDrawer.setNavigationItemSelectedListener(this)
 
-        // Send notifications when app is opened
-        sendMultipleNotifications()
-
         // Handle intent if notification fragment should be opened
         if (intent?.getBooleanExtra("open_notification_fragment", false) == true) {
             openFragment(NotificationFragment())
@@ -101,68 +96,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    // Method to send notifications
-    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
-    private fun sendMultipleNotifications() {
-        // Create notification channel if required (for API 26+)
-        createNotificationChannel()
-
-        // Define different content for each notification
-        val notificationsContent = listOf(
-            PushNotificationContent("Notification 1", "This is the first notification"),
-            PushNotificationContent("Notification 2", "This is the second notification"),
-            PushNotificationContent("Notification 3", "This is the third notification"),
-            PushNotificationContent("Notification 4", "This is the fourth notification")
-        )
-
-        // Loop through the notificationsContent and send each notification
-        for (i in notificationsContent.indices) {
-            val content = notificationsContent[i]
-
-            val intent = Intent(this, MainActivity::class.java).apply {
-                putExtra("open_notification_fragment", true)  // Flag to show NotificationFragment
-                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            }
-
-            val pendingIntent = PendingIntent.getActivity(
-                this,
-                i,  // Use different request codes for different notifications
-                intent,
-                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
-            )
-
-            // Build the notification
-            val builder = NotificationCompat.Builder(this, CHANNEL_ID)
-                .setSmallIcon(R.drawable.ic_launcher_foreground)
-                .setContentTitle(content.title)
-                .setContentText(content.text)
-                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setContentIntent(pendingIntent)
-                .setAutoCancel(true)
-
-            // Ensure permission is granted before posting the notification
-            if (ContextCompat.checkSelfPermission(
-                    this,
-                    android.Manifest.permission.POST_NOTIFICATIONS
-                ) == PackageManager.PERMISSION_GRANTED) {
-                // Send the notification with a unique ID (using i as the notification ID)
-                with(NotificationManagerCompat.from(this)) {
-                    notify(i + 1, builder.build()) // Use unique notification IDs (1, 2, 3, 4)
-                }
-            } else {
-                Log.d("MainActivity", "Permission not granted, cannot send notification")
-                requestNotificationPermission() // Request permission if not granted
-            }
-        }
-    }
-
-    // Request notification permission for Android 13+
-    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
-    private fun requestNotificationPermission() {
-        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(arrayOf(android.Manifest.permission.POST_NOTIFICATIONS), PERMISSION_REQUEST_CODE)
-        }
-    }
 
     // Create notification channel for Android 8.0 (API 26) and above
     private fun createNotificationChannel() {
@@ -188,10 +121,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.nav_profile -> openFragment(ProfileFragment())
             R.id.nav_contact_us -> openFragment(ContactusFragment())
             R.id.nav_about_us -> openFragment(AboutusFragment())
-            R.id.nav_faqs -> openFragment(FaqsFragment())
             R.id.nav_logout -> {
                 logout() // Call logout method
                 return true

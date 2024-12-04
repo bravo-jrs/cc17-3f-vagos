@@ -26,7 +26,7 @@ import com.example.alertifyapp.adapter.NotificationAdapter
 import com.example.alertifyapp.model.NotificationContent
 import com.example.alertifyapp.model.NotificationViewModel
 
-const val CHANNEL_ID = "channelId"
+const val CHANNEL_ID = "alertify_channel"  // Updated to a more descriptive name
 
 class NotificationFragment : Fragment(R.layout.fragment_notification) {
 
@@ -37,7 +37,7 @@ class NotificationFragment : Fragment(R.layout.fragment_notification) {
     ) { isGranted ->
         if (isGranted) {
             Log.d("NotificationFragment", "Permission granted")
-            sendNotificationsOnce() // Send notifications after permission is granted
+            sendNotificationsOnce()  // Send notifications after permission is granted
         } else {
             Log.d("NotificationFragment", "Permission denied")
             Toast.makeText(requireContext(), "Permission denied to post notifications.", Toast.LENGTH_SHORT).show()
@@ -59,7 +59,7 @@ class NotificationFragment : Fragment(R.layout.fragment_notification) {
         recyclerView = view.findViewById(R.id.recycler_view_notifications)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
-        notificationAdapter = NotificationAdapter(notificationViewModel.unscheduledNotifications) { notification: NotificationContent ->
+        notificationAdapter = NotificationAdapter(notificationViewModel.unscheduledNotifications) { notification ->
             // Handle the click event here and pass notification details to the next fragment
             val bundle = Bundle().apply {
                 putString("notification_title", notification.title)
@@ -68,7 +68,7 @@ class NotificationFragment : Fragment(R.layout.fragment_notification) {
                 putString("notification_time_restored", notification.timeRestored)
                 putString("notification_purpose", notification.purpose)
                 putString("notification_areas_affected", notification.areasAffected)
-                putInt("notification_image_res_id", notification.imageResId) // Use resource ID for image
+                putInt("notification_image_res_id", notification.imageResId)  // Use resource ID for image
             }
 
             val detailFragment = NotificationDetailFragment().apply {
@@ -78,8 +78,8 @@ class NotificationFragment : Fragment(R.layout.fragment_notification) {
             // Replace the fragment
             parentFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, detailFragment)
-                .addToBackStack("NotificationDetailFragment") // Add a name to the back stack entry
-                .commit() // Use commit() after the transaction
+                .addToBackStack("NotificationDetailFragment")  // Add a name to the back stack entry
+                .commit()  // Use commit() after the transaction
         }
 
         recyclerView.adapter = notificationAdapter
@@ -112,7 +112,7 @@ class NotificationFragment : Fragment(R.layout.fragment_notification) {
                 requestPermissionLauncher.launch(android.Manifest.permission.POST_NOTIFICATIONS)
             }
         } else {
-            sendNotificationsOnce()
+            sendNotificationsOnce()  // For older versions, send notifications immediately
         }
     }
 
@@ -199,12 +199,13 @@ class NotificationFragment : Fragment(R.layout.fragment_notification) {
                     .setContentIntent(pendingIntent)
                     .setAutoCancel(true)
 
+                // Ensure permission is granted before posting the notification
                 if (ContextCompat.checkSelfPermission(
                         requireContext(),
                         android.Manifest.permission.POST_NOTIFICATIONS
                     ) == PackageManager.PERMISSION_GRANTED) {
                     with(NotificationManagerCompat.from(requireContext())) {
-                        notify(i + 1, builder.build())
+                        notify(i + 1, builder.build())  // Notify with a unique ID
                     }
                 } else {
                     Log.d("NotificationFragment", "Permission not granted, cannot send notification")
@@ -219,10 +220,10 @@ class NotificationFragment : Fragment(R.layout.fragment_notification) {
     private fun createNotificationChannel() {
         val channel = NotificationChannel(
             CHANNEL_ID,
-            "Test Channel",
+            "Power Notifications",
             NotificationManager.IMPORTANCE_DEFAULT
         ).apply {
-            description = "Channel for notifications"
+            description = "Channel for power interruption notifications"
         }
         val notificationManager =
             requireContext().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager

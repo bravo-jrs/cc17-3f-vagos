@@ -6,10 +6,6 @@
     <group
         android:checkableBehavior="single">
 
-        <item
-            android:id="@+id/nav_profile"
-            android:title="Profile"
-            android:icon="@drawable/profile" />
 
         <item
             android:id="@+id/nav_contact_us"
@@ -20,11 +16,6 @@
             android:id="@+id/nav_about_us"
             android:title="About us"
             android:icon="@drawable/about_us_icon" />
-
-        <item
-            android:id="@+id/nav_faqs"
-            android:title="FAQS"
-            android:icon="@drawable/faqs_icon" />
 
         <item
             android:id="@+id/nav_logout"

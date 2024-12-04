@@ -29,12 +29,15 @@
             android:text="About Us"
             android:textAlignment="center"
             android:textSize="18sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:gravity="center"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="17dp"
+            android:textColor="@color/black"
             android:text="Alertify is your go-to resource for staying informed and prepared." />
 
         <TableLayout
@@ -47,7 +50,8 @@
                 android:layout_height="wrap_content"
                 android:paddingBottom="8dp"
                 android:text="Key Features:"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
 
             <TableRow>
 
@@ -59,6 +63,7 @@
                 <TextView
                     android:layout_width="371dp"
                     android:layout_column="2"
+                    android:textColor="@color/black"
                     android:text="Outage info: Details on ongoing outages, restoration times, and affected areas.">
                 </TextView>
             </TableRow>
@@ -73,19 +78,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_column="2"
+                    android:textColor="@color/black"
                     android:text="User profiles: Manage personal info and preferences">
-                </TextView>
-            </TableRow>
-            <TableRow>
-                <TextView
-                    android:layout_column="1"
-                    android:text="• ">
-                </TextView>
-
-                <TextView
-                    android:layout_width="401dp"
-                    android:layout_column="2"
-                    android:text="FAQs: Answers to common questions about outages, safety, and app features.">
                 </TextView>
             </TableRow>
 
@@ -99,6 +93,7 @@
                 <TextView
                     android:layout_width="401dp"
                     android:layout_column="2"
+                    android:textColor="@color/black"
                     android:text="Emergency numbers: Quick access to emergency contacts.">
                 </TextView>
             </TableRow>
